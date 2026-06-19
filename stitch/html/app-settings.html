@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-low": "#f4f3f8",
+                    "inverse-surface": "#2f3034",
+                    "on-primary": "#ffffff",
+                    "background": "#faf9fe",
+                    "on-tertiary-fixed": "#1a1c1f",
+                    "outline": "#926f6a",
+                    "outline-variant": "#e7bdb7",
+                    "surface-dim": "#dad9df",
+                    "secondary-container": "#e2dfe1",
+                    "on-tertiary-fixed-variant": "#45474b",
+                    "inverse-primary": "#ffb4aa",
+                    "surface": "#faf9fe",
+                    "primary": "#bc000a",
+                    "surface-container": "#eeedf3",
+                    "tertiary": "#5a5c60",
+                    "on-background": "#1a1b1f",
+                    "on-error": "#ffffff",
+                    "secondary-fixed": "#e4e2e4",
+                    "on-surface": "#1a1b1f",
+                    "surface-container-high": "#e9e7ed",
+                    "on-primary-container": "#fffbff",
+                    "secondary-fixed-dim": "#c8c6c8",
+                    "error-container": "#ffdad6",
+                    "on-surface-variant": "#5d3f3b",
+                    "surface-tint": "#c0000a",
+                    "surface-bright": "#faf9fe",
+                    "on-tertiary": "#ffffff",
+                    "on-error-container": "#93000a",
+                    "on-primary-fixed-variant": "#930005",
+                    "on-primary-fixed": "#410001",
+                    "on-secondary-fixed-variant": "#474649",
+                    "on-secondary-container": "#636264",
+                    "surface-container-lowest": "#ffffff",
+                    "on-secondary": "#ffffff",
+                    "surface-variant": "#e3e2e7",
+                    "error": "#ba1a1a",
+                    "primary-fixed": "#ffdad5",
+                    "tertiary-fixed": "#e2e2e7",
+                    "on-tertiary-container": "#fdfcff",
+                    "tertiary-container": "#737479",
+                    "primary-fixed-dim": "#ffb4aa",
+                    "on-secondary-fixed": "#1b1b1d",
+                    "secondary": "#5f5e60",
+                    "primary-container": "#e2241f",
+                    "inverse-on-surface": "#f1f0f5",
+                    "tertiary-fixed-dim": "#c6c6cb",
+                    "surface-container-highest": "#e3e2e7"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xs": "8px",
+                    "margin-mobile": "16px",
+                    "lg": "40px",
+                    "margin-desktop": "32px",
+                    "base": "4px",
+                    "md": "24px",
+                    "sm": "16px",
+                    "xl": "64px",
+                    "gutter": "20px"
+            },
+            "fontFamily": {
+                    "title-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "label-md": ["Inter"],
+                    "headline-lg-mobile": ["Inter"]
+            },
+            "fontSize": {
+                    "title-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .active-pill {
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.06);
+        }
+        .toggle-dot {
+            transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        input:checked ~ .toggle-bg {
+            background-color: #bc000a;
+        }
+        input:checked ~ .toggle-dot {
+            transform: translateX(20px);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body-lg min-h-screen flex flex-col">
+<!-- TopAppBar -->
+<header class="bg-surface dark:bg-surface-dim w-full top-0 sticky z-40">
+<div class="flex justify-between items-center px-margin-mobile py-sm w-full">
+<div class="flex items-center gap-sm">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center overflow-hidden">
+<img alt="User profile avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC3lws8wFDNa4kdxm6M5wKT1SB6mIRqQfoCqGOdBZawk-d4V6GQwb6HJUtpC-NL9VNSmpmQJ6Y3lVyNDPe2_avtU6Ec_T1kqD4ElmM6G9F9j7-K0TGMxHryJ43XAhQrbSS6BwrDIyL2XYqgx5AV4tOFvmZOo8mhXV8-qFHIknWlqThTjgx6SvYOb8ejtlEWrXoORX8h_TGhw9l78ejJIFWZbyNKl4JquiPkZN9LLHPVMU45IPQB5DW68WRiouI2kvA5E-KW_iesp_hU"/>
+</div>
+<h1 class="text-headline-lg-mobile font-headline-lg-mobile font-bold text-primary dark:text-primary-fixed">Flux</h1>
+</div>
+<button class="text-on-surface-variant hover:opacity-80 transition-opacity active:scale-95 transition-transform duration-200">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 px-margin-mobile pt-md pb-xl">
+<div class="max-w-md mx-auto space-y-md">
+<!-- Video Quality Section -->
+<section class="space-y-sm">
+<div class="flex items-center gap-xs px-xs">
+<span class="material-symbols-outlined text-primary" data-icon="high_quality">high_quality</span>
+<h2 class="font-title-md text-title-md text-on-surface">Video Quality</h2>
+</div>
+<div class="bg-surface-container-lowest rounded-xl p-xs flex gap-xs shadow-[0_4px_12px_rgba(0,0,0,0.04)]">
+<button class="quality-btn flex-1 py-md rounded-lg font-label-md text-label-md transition-all duration-200 text-secondary hover:bg-surface-container-low" id="quality-low" onclick="selectQuality('low')">
+                        Low
+                    </button>
+<button class="quality-btn flex-1 py-md rounded-lg font-label-md text-label-md transition-all duration-200 bg-primary text-on-primary font-bold active-pill" id="quality-medium" onclick="selectQuality('medium')">
+                        Medium
+                    </button>
+<button class="quality-btn flex-1 py-md rounded-lg font-label-md text-label-md transition-all duration-200 text-secondary hover:bg-surface-container-low" id="quality-high" onclick="selectQuality('high')">
+                        High
+                    </button>
+</div>
+<p class="px-xs font-body-sm text-body-sm text-on-surface-variant opacity-70">Balance performance and clarity.</p>
+</section>
+<!-- Save to Photos Section -->
+<section class="space-y-sm">
+<div class="bg-surface-container-lowest rounded-xl p-md flex items-center justify-between shadow-[0_4px_12px_rgba(0,0,0,0.04)]">
+<div class="flex items-center gap-sm">
+<div class="w-10 h-10 bg-primary-fixed rounded-xl flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="photo_library">photo_library</span>
+</div>
+<div>
+<h2 class="font-title-md text-title-md text-on-surface">Save to Photos</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Automatically back up media</p>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="toggle-bg w-12 h-7 bg-surface-container-highest rounded-full transition-colors"></div>
+<div class="toggle-dot absolute left-1 top-1 bg-white w-5 h-5 rounded-full shadow-sm"></div>
+</label>
+</div>
+</section>
+<!-- About Flux Section -->
+<section class="space-y-sm">
+<div class="flex items-center gap-xs px-xs">
+<span class="material-symbols-outlined text-primary" data-icon="info">info</span>
+<h2 class="font-title-md text-title-md text-on-surface">About Flux</h2>
+</div>
+<div class="bg-surface-container-lowest rounded-xl overflow-hidden shadow-[0_4px_12px_rgba(0,0,0,0.04)]">
+<div class="p-md flex items-center justify-between hover:bg-surface-container-low transition-colors cursor-pointer group">
+<span class="font-body-lg text-body-lg text-on-surface">Version</span>
+<span class="font-label-md text-label-md text-secondary">2.4.0 (Red Panda)</span>
+</div>
+<div class="h-[1px] bg-surface-container mx-md"></div>
+<div class="p-md flex items-center justify-between hover:bg-surface-container-low transition-colors cursor-pointer group">
+<span class="font-body-lg text-body-lg text-on-surface">Privacy Policy</span>
+<span class="material-symbols-outlined text-secondary opacity-40 group-hover:opacity-100 transition-opacity" data-icon="chevron_right">chevron_right</span>
+</div>
+<div class="h-[1px] bg-surface-container mx-md"></div>
+<div class="p-md flex items-center justify-between hover:bg-surface-container-low transition-colors cursor-pointer group">
+<span class="font-body-lg text-body-lg text-on-surface">Terms of Service</span>
+<span class="material-symbols-outlined text-secondary opacity-40 group-hover:opacity-100 transition-opacity" data-icon="chevron_right">chevron_right</span>
+</div>
+</div>
+</section>
+<!-- Visual Flare / Branding -->
+<div class="py-lg flex flex-col items-center justify-center opacity-30">
+<div class="w-16 h-16 rounded-2xl bg-primary mb-sm rotate-12 flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-3xl" data-icon="flare">flare</span>
+</div>
+<p class="font-label-md text-label-md uppercase tracking-widest text-primary">Made for Creators</p>
+</div>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-margin-mobile pb-md pt-sm shadow-[0_-4px_12px_rgba(0,0,0,0.04)] bg-surface dark:bg-surface-container-lowest rounded-t-xl">
+<a class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed-dim px-md py-xs hover:bg-surface-container-high transition-colors active:scale-90 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="radio_button_checked">radio_button_checked</span>
+<span class="font-label-md text-label-md">Record</span>
+</a>
+<a class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed-dim px-md py-xs hover:bg-surface-container-high transition-colors active:scale-90 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="grid_view">grid_view</span>
+<span class="font-label-md text-label-md">Gallery</span>
+</a>
+<!-- Settings is Active -->
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-xl px-md py-xs active:scale-90 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="settings" style="font-variation-settings: 'FILL' 1;">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</a>
+</nav>
+<script>
+        function selectQuality(mode) {
+            const buttons = document.querySelectorAll('.quality-btn');
+            buttons.forEach(btn => {
+                btn.classList.remove('bg-primary', 'text-on-primary', 'font-bold', 'active-pill');
+                btn.classList.add('text-secondary', 'hover:bg-surface-container-low');
+            });
+
+            const activeBtn = document.getElementById(`quality-${mode}`);
+            activeBtn.classList.add('bg-primary', 'text-on-primary', 'font-bold', 'active-pill');
+            activeBtn.classList.remove('text-secondary', 'hover:bg-surface-container-low');
+        }
+
+        // Add micro-interaction to toggles
+        document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+            checkbox.addEventListener('change', function() {
+                const dot = this.nextElementSibling.nextElementSibling;
+                const bg = this.nextElementSibling;
+                if(this.checked) {
+                    dot.style.transform = 'translateX(20px)';
+                    bg.style.backgroundColor = '#bc000a';
+                } else {
+                    dot.style.transform = 'translateX(0px)';
+                    bg.style.backgroundColor = '';
+                }
+            });
+        });
+    </script>
+</body></html>

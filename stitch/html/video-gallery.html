@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-container-low": "#f4f3f8",
+            "inverse-surface": "#2f3034",
+            "on-primary": "#ffffff",
+            "background": "#faf9fe",
+            "on-tertiary-fixed": "#1a1c1f",
+            "outline": "#926f6a",
+            "outline-variant": "#e7bdb7",
+            "surface-dim": "#dad9df",
+            "secondary-container": "#e2dfe1",
+            "on-tertiary-fixed-variant": "#45474b",
+            "inverse-primary": "#ffb4aa",
+            "surface": "#faf9fe",
+            "primary": "#bc000a",
+            "surface-container": "#eeedf3",
+            "tertiary": "#5a5c60",
+            "on-background": "#1a1b1f",
+            "on-error": "#ffffff",
+            "secondary-fixed": "#e4e2e4",
+            "on-surface": "#1a1b1f",
+            "surface-container-high": "#e9e7ed",
+            "on-primary-container": "#fffbff",
+            "secondary-fixed-dim": "#c8c6c8",
+            "error-container": "#ffdad6",
+            "on-surface-variant": "#5d3f3b",
+            "surface-tint": "#c0000a",
+            "surface-bright": "#faf9fe",
+            "on-tertiary": "#ffffff",
+            "on-error-container": "#93000a",
+            "on-primary-fixed-variant": "#930005",
+            "on-primary-fixed": "#410001",
+            "on-secondary-fixed-variant": "#474649",
+            "on-secondary-container": "#636264",
+            "surface-container-lowest": "#ffffff",
+            "on-secondary": "#ffffff",
+            "surface-variant": "#e3e2e7",
+            "error": "#ba1a1a",
+            "primary-fixed": "#ffdad5",
+            "tertiary-fixed": "#e2e2e7",
+            "on-tertiary-container": "#fdfcff",
+            "tertiary-container": "#737479",
+            "primary-fixed-dim": "#ffb4aa",
+            "on-secondary-fixed": "#1b1b1d",
+            "secondary": "#5f5e60",
+            "primary-container": "#e2241f",
+            "inverse-on-surface": "#f1f0f5",
+            "tertiary-fixed-dim": "#c6c6cb",
+            "surface-container-highest": "#e3e2e7"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "xs": "8px",
+            "margin-mobile": "16px",
+            "lg": "40px",
+            "margin-desktop": "32px",
+            "base": "4px",
+            "md": "24px",
+            "sm": "16px",
+            "xl": "64px",
+            "gutter": "20px"
+          },
+          "fontFamily": {
+            "title-md": ["Inter"],
+            "body-lg": ["Inter"],
+            "display-lg": ["Inter"],
+            "body-sm": ["Inter"],
+            "headline-lg": ["Inter"],
+            "label-md": ["Inter"],
+            "headline-lg-mobile": ["Inter"]
+          },
+          "fontSize": {
+            "title-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+            "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+            "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+            "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+            "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+            "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+            "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "700"}]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    .video-card-hover:hover .play-overlay {
+      opacity: 1;
+      transform: scale(1);
+    }
+    .scroll-hide::-webkit-scrollbar {
+      display: none;
+    }
+    .scroll-hide {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body-lg min-h-screen pb-24">
+<!-- TopAppBar -->
+<header class="w-full top-0 sticky bg-surface dark:bg-surface-dim z-50">
+<div class="flex justify-between items-center px-margin-mobile py-sm w-full">
+<div class="flex items-center gap-sm">
+<div class="w-10 h-10 rounded-full bg-primary-fixed overflow-hidden">
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="A professional high-resolution close-up portrait of a young creative professional in a modern studio environment. The lighting is soft and cinematic with a bright white background, maintaining a minimalist and premium lifestyle aesthetic. The color palette is dominated by clean whites and subtle greys with a focused, energetic expression." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAeRy9K2t8bvvEFfQWvmFd7u9rvsRpuBURRXTK7a_eYYjFnYHce5jsXk11QPDrzpZVkDOARlSl5RntK3ESHfiBkzZA3Ibx7-A7GBjjqs3Eb9Egl_YwmJZf2N2q8wNaF40GzaZibowwY5wnpaEqj07-QLiR5CzFsQ9QTb3N3-oj-yP2o2MxyvSFeMt3vxuflSHbbKDu2hbBSgSq5p0iDmaQ0oONwJnxYbz2wqDf1Ql8AUgnDVJokCAj4CsRYPvHP-VryEP5VYbm16Con"/>
+</div>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-primary dark:text-primary-fixed">Flux</h1>
+</div>
+<button class="text-on-surface-variant dark:text-on-surface-variant hover:opacity-80 transition-opacity active:scale-95 transition-transform duration-200">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+</div>
+</header>
+<main class="px-margin-mobile pt-md">
+<!-- Search and Filter Section -->
+<section class="mb-lg">
+<div class="flex flex-col gap-sm">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-sm top-1/2 -translate-y-1/2 text-on-surface-variant" data-icon="search">search</span>
+<input class="w-full pl-xl pr-md py-sm bg-surface-container-low rounded-xl border-none focus:ring-2 focus:ring-primary focus:bg-surface transition-all text-body-lg" placeholder="Search your gallery..." type="text"/>
+</div>
+<div class="flex gap-xs overflow-x-auto scroll-hide py-base">
+<button class="whitespace-nowrap px-md py-xs rounded-full bg-primary text-on-primary font-label-md text-label-md transition-all active:scale-95">All Videos</button>
+<button class="whitespace-nowrap px-md py-xs rounded-full bg-surface-container text-secondary font-label-md text-label-md hover:bg-surface-container-high transition-all active:scale-95">Gaming Clip</button>
+<button class="whitespace-nowrap px-md py-xs rounded-full bg-surface-container text-secondary font-label-md text-label-md hover:bg-surface-container-high transition-all active:scale-95">Tutorial</button>
+<button class="whitespace-nowrap px-md py-xs rounded-full bg-surface-container text-secondary font-label-md text-label-md hover:bg-surface-container-high transition-all active:scale-95">Vlogs</button>
+<button class="whitespace-nowrap px-md py-xs rounded-full bg-surface-container text-secondary font-label-md text-label-md hover:bg-surface-container-high transition-all active:scale-95">Unlisted</button>
+</div>
+</div>
+</section>
+<!-- Grid Header -->
+<div class="flex justify-between items-end mb-sm">
+<h2 class="font-title-md text-title-md text-on-surface">Recent Uploads</h2>
+<button class="text-primary font-label-md text-label-md hover:underline">View all</button>
+</div>
+<!-- Video Grid -->
+<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md">
+<!-- Video Card 1: Gaming Clip -->
+<div class="video-card-hover group bg-surface-container-lowest rounded-xl overflow-hidden shadow-[0_4px_12px_rgba(0,0,0,0.04)] hover:shadow-lg transition-all duration-300 flex flex-col cursor-pointer">
+<div class="relative aspect-video bg-surface-container-high overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="A dynamic high-energy gaming setup in a modern dark room with neon crimson accents. The screen displays a fast-paced futuristic action game with vibrant particle effects. High-key lighting highlights the sleek aesthetic of the mechanical keyboard and high-end gaming peripherals. The overall mood is intense and technologically advanced." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAneqEPAu4j3e0qkD2kvH0QB6IqRtfJDSkkwB-X2cCR1-p3RU1g8wVtUO-5IoQeOodA3drJZoMInsPKTpq3rmcvvFa2-yCergSxDPRguMdhKSn7ovx8JV1urLuvRB3Eezfajpw8L-1cQClfzt0L7BVFonWFnrw1aGyUnIFYpD6KyrHk_i6x-a6XDeXNLUJG-APRY6AKVU2gwUao5ZI4tjkC-7jXDwo2VOySpWJrR4g0le7sAVTTAXAgV9aTiWqhfj0N4WuhNPjNHSJH"/>
+<div class="absolute top-sm left-sm bg-primary text-on-primary px-sm py-[2px] rounded-full text-[10px] font-bold tracking-wider uppercase">New</div>
+<div class="absolute bottom-sm right-sm bg-black/60 text-white px-xs py-[2px] rounded-lg text-body-sm backdrop-blur-sm">04:20</div>
+<div class="play-overlay absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 transition-all duration-300 scale-90">
+<div class="w-14 h-14 bg-primary text-on-primary rounded-full flex items-center justify-center shadow-lg">
+<span class="material-symbols-outlined text-4xl" data-icon="play_arrow" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</div>
+</div>
+</div>
+<div class="p-sm flex gap-sm">
+<div class="w-10 h-10 rounded-full bg-surface-variant flex-shrink-0">
+<img alt="Channel" class="w-full h-full rounded-full" data-alt="A stylized minimalist avatar representing a professional gaming channel, featuring a sleek geometric logo in crimson red and obsidian black. The background is a clean white, emphasizing the high-contrast aesthetic and professional utility of the brand identity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDEznP5_fkrpr0P-wB3awAo5B5fPDmShZPfYPxCzJYlcSoODUeKJOUgiH1ZgTeIosLGWMlZbQrRqUQCcDyaX16NCLvhv0gNF6WXQMheCvRjP2a1jtZ6HsDmmkTe-c8FkayM76ASHFOfyV7_vTkkVlmzkJ58YPf6Elhadwr5_vEpFzYatdtljgDDnJGAmGLVdbdvJXyu_vatzB2vFwwb5HkWHugNGYimm3y7Z3OTjMduebhMTyatsZa55tOXaAGa5UP0v6PFuNxzntnZ"/>
+</div>
+<div class="flex flex-col">
+<h3 class="font-title-md text-on-surface line-clamp-1">Pro Gaming Clip #42</h3>
+<p class="text-secondary font-body-sm text-body-sm">Gaming • 2 hours ago</p>
+</div>
+</div>
+</div>
+<!-- Video Card 2: Tutorial -->
+<div class="video-card-hover group bg-surface-container-lowest rounded-xl overflow-hidden shadow-[0_4px_12px_rgba(0,0,0,0.04)] hover:shadow-lg transition-all duration-300 flex flex-col cursor-pointer">
+<div class="relative aspect-video bg-surface-container-high overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="A clean and professional home office setup with a high-end laptop on a white desk. Soft morning sunlight filters through a nearby window, creating a serene and productive atmosphere. The workspace is organized with a minimalist aesthetic, featuring a small succulent and a pair of modern headphones. The lighting is bright and airy." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDaS79RpyZGZGK0fYwo2q9UriTJaBhBLBPFltUB04zACghv_mBeQq6GfnCsWPQ2oyS4drs5Sn9YdIKdQzUa4Le8MAOmbYORpqfPjpTBkNCUuuDRnBp8xcpC8ot5wnkyMmD4bkhzXm6T5_jCSZKrqztLaTLkUuc2vgwn_rpiAHMRweMrnaHsad3JXKrZQqWK0Wfr31E8_wb_1Wl2bb7TAyuMe9K5pUWzpk-r5xZjcvhIjH9AjK1uwySCJMN_rL3zNzzNrIvwundAaDwI"/>
+<div class="absolute bottom-sm right-sm bg-black/60 text-white px-xs py-[2px] rounded-lg text-body-sm backdrop-blur-sm">12:15</div>
+<div class="play-overlay absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 transition-all duration-300 scale-90">
+<div class="w-14 h-14 bg-primary text-on-primary rounded-full flex items-center justify-center shadow-lg">
+<span class="material-symbols-outlined text-4xl" data-icon="play_arrow" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</div>
+</div>
+</div>
+<div class="p-sm flex gap-sm">
+<div class="w-10 h-10 rounded-full bg-surface-variant flex-shrink-0">
+<img alt="Channel" class="w-full h-full rounded-full" data-alt="A professional circular profile icon for an educational tutorial brand, showcasing a bright yellow lightbulb icon set against a clean, modern gray background. The style is minimalist and tactile, reflecting a sense of clarity and helpful utility consistent with a high-end lifestyle productivity tool." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA18Jxu5O7htSsn7i3QoRH8EQYhLKL3mg_L8j_Q7wAELM47pPEl59PLpOq4HYtjeBlbqfozZRWvBe6kJhZFmw-eaiOUH8UTZG_wVVQOFLTCHsd43ZhZAyjyNuhuzXvdmAaTH8wG-UzD9nbP971bCbnAy4v8TFKKUwEAbzqYkAh3m8MPsxCYsl_ikBBCG63c2HNLGqp3hC3uL0C59UWP7sunrUymvnAgfBhA-v8y4673-CxhCnDQ_G2WfnlthTaFkvYawyM14j8pW_VY"/>
+</div>
+<div class="flex flex-col">
+<h3 class="font-title-md text-on-surface line-clamp-1">UI Design Masterclass</h3>
+<p class="text-secondary font-body-sm text-body-sm">Tutorial • 1 day ago</p>
+</div>
+</div>
+</div>
+<!-- Video Card 3: Vlog -->
+<div class="video-card-hover group bg-surface-container-lowest rounded-xl overflow-hidden shadow-[0_4px_12px_rgba(0,0,0,0.04)] hover:shadow-lg transition-all duration-300 flex flex-col cursor-pointer">
+<div class="relative aspect-video bg-surface-container-high overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="A breathtaking sunset view of the Paris skyline with the Eiffel Tower standing prominently. The sky is painted in warm shades of orange, crimson, and soft pink. The perspective is from a high-rise balcony, capturing a sense of wanderlust and premium travel. The overall lighting is warm, cinematic, and inviting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCxn5-FW3p3vJUhPJlAsmKd1Z8KHU770NFmWG4ndPGzESBWRkZkuuWMJFgaCKhr_7EthTYyEDMs78FXQPAmXmNOHhJJlfkZgu4NpDeBZbwohxqDxbyxYucifBM16tlfBKhXb1aZSU3Igg-LyWkcPThPvr3MbQ__DVzTEZujBdh6J9TR7nZL5KZ4InKYbmwLSYfVqNNATw3J4iadwKSf50OYrBr0ec-l5otCD4Ez6lECo2zzMe8ez9rbUqP9bY87VkjcPkiiU0Yi8-u2"/>
+<div class="absolute bottom-sm right-sm bg-black/60 text-white px-xs py-[2px] rounded-lg text-body-sm backdrop-blur-sm">08:45</div>
+<div class="play-overlay absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 transition-all duration-300 scale-90">
+<div class="w-14 h-14 bg-primary text-on-primary rounded-full flex items-center justify-center shadow-lg">
+<span class="material-symbols-outlined text-4xl" data-icon="play_arrow" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</div>
+</div>
+</div>
+<div class="p-sm flex gap-sm">
+<div class="w-10 h-10 rounded-full bg-surface-variant flex-shrink-0">
+<img alt="Channel" class="w-full h-full rounded-full" data-alt="A professional circular avatar icon for a travel vlog series, featuring a minimalist globe symbol. The background is a soft, tactile light gray, with the icon rendered in a vibrant primary red. The design is modern and editorial, prioritizing high-quality travel storytelling." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDCemilDjnaCTNwsqLr4lXS2Ur6gOlSDmrrWgjIU7x8Npg43IrGZoY5F_HXSCQPTpR2DFm2Pdz6L2Rx78L8QGmYXeFTlPbvShWsykcy7AqtQ2oedN5hrhJ62z7gLfJyKeYY6cTN9H_F1jOOHon46lQuowJs1TGVdKA0BZl2LQ12wgj0j5mp0aR4HyOUeML6D9jOiPCQ6OAMVmnr5tb7w96mypzQzdFsL2i31pYCMsAlcQRMpsaQ4u6D9fkTZJMnmFntF6BpaQxWuSyW"/>
+</div>
+<div class="flex flex-col">
+<h3 class="font-title-md text-on-surface line-clamp-1">Weekend in Paris</h3>
+<p class="text-secondary font-body-sm text-body-sm">Vlogs • 3 days ago</p>
+</div>
+</div>
+</div>
+<!-- Video Card 4: Tutorial -->
+<div class="video-card-hover group bg-surface-container-lowest rounded-xl overflow-hidden shadow-[0_4px_12px_rgba(0,0,0,0.04)] hover:shadow-lg transition-all duration-300 flex flex-col cursor-pointer">
+<div class="relative aspect-video bg-surface-container-high overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="A focused high-angle shot of a person's hands coding on a high-tech mechanical keyboard. Multiple high-resolution monitors in the background show complex lines of code and data visualizations. The room is softly lit with cool blue ambient light and warm crimson accents. The scene evokes high productivity and technical expertise." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAXq6YFg8x_BKIbtSObjMoe0yZpdoqELYSKxMxsY6W_lqDE4kktOOIwTggTcdSzeZnjf3ijaXMmitO2rBIUaQ1XeD8nklPGOjKmgQAzihTMI5jR3imaunyf5OBQ3YnxrtFfuw68bBd3hBzMCfkks0i13ibMJbaOlO2sUnL502vCdpk_rs0nSwQaEEwY6bvOhQ98ve9sJyzKA2XC0eKnU4oxsp1hnOm-SM1WvzXpVTd583fVcm4PXeiJuWfPFfTo85eeHT-c1T7bWvTL"/>
+<div class="absolute bottom-sm right-sm bg-black/60 text-white px-xs py-[2px] rounded-lg text-body-sm backdrop-blur-sm">24:30</div>
+<div class="play-overlay absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 transition-all duration-300 scale-90">
+<div class="w-14 h-14 bg-primary text-on-primary rounded-full flex items-center justify-center shadow-lg">
+<span class="material-symbols-outlined text-4xl" data-icon="play_arrow" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</div>
+</div>
+</div>
+<div class="p-sm flex gap-sm">
+<div class="w-10 h-10 rounded-full bg-surface-variant flex-shrink-0">
+<img alt="Channel" class="w-full h-full rounded-full" data-alt="A modern and minimalist icon for a software development channel, featuring a code bracket symbol in a vibrant red against a crisp white background. The design is sleek, professional, and clear, following a tactile high-end stationery aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_3V8PGhdccC1vmnLJRv3Pry__iVQMraBTHgQHQjggfKYv4L1CCDuH0eLLLDkdOJojxPYbsoqP2iRQ1u0_mpvVX5-ZpoSlD_btjooJjrCnfEs4rOJsgdQSVAQE1mw-PQ6xOHh3xuhjwrDjSbEw0rr_I_6vthUK-iQWx1AijQBIOW7jT2X60r2UVmB8P8_kJAdG3rkIhGDtw_YayoLt5GGM0Q3WzTenhs4TqmEiFRB7JxAflPlIcmimBkRP1yWNSYbagJ70ZOcP3BUW"/>
+</div>
+<div class="flex flex-col">
+<h3 class="font-title-md text-on-surface line-clamp-1">Tailwind CSS Tricks</h3>
+<p class="text-secondary font-body-sm text-body-sm">Tutorial • 5 days ago</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Upload Progress Section -->
+<section class="mt-xl bg-surface-container-low p-md rounded-xl border border-outline-variant/30">
+<div class="flex items-center justify-between mb-sm">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary" data-icon="cloud_upload">cloud_upload</span>
+<h4 class="font-title-md text-on-surface">Uploading Video</h4>
+</div>
+<span class="text-primary font-bold">78%</span>
+</div>
+<div class="w-full h-2 bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full transition-all duration-500" style="width: 78%;"></div>
+</div>
+<div class="mt-sm flex justify-between items-center">
+<p class="text-secondary font-body-sm text-body-sm">Rendering "Setup Tour 2024.mp4"</p>
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-title-md" data-icon="close">close</span>
+</button>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-margin-mobile pb-md pt-sm shadow-[0_-4px_12px_rgba(0,0,0,0.04)] bg-surface dark:bg-surface-container-lowest rounded-t-xl">
+<a class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed-dim px-md py-xs hover:bg-surface-container-high transition-colors active:scale-90 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="radio_button_checked">radio_button_checked</span>
+<span class="font-label-md text-label-md">Record</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-xl px-md py-xs hover:opacity-80 transition-opacity active:scale-90 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="grid_view" style="font-variation-settings: 'FILL' 1;">grid_view</span>
+<span class="font-label-md text-label-md">Gallery</span>
+</a>
+<a class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed-dim px-md py-xs hover:bg-surface-container-high transition-colors active:scale-90 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</a>
+</nav>
+<!-- Floating Action Button - suppressed on gallery per instructions, but added logic for interaction -->
+<!-- Note: instructed to suppress FAB on details, but Gallery is top-level. Keeping focus on nav. -->
+<script>
+    // Micro-interactions for chips
+    const chips = document.querySelectorAll('.scroll-hide button');
+    chips.forEach(chip => {
+      chip.addEventListener('click', () => {
+        chips.forEach(c => {
+          c.classList.remove('bg-primary', 'text-on-primary');
+          c.classList.add('bg-surface-container', 'text-secondary');
+        });
+        chip.classList.remove('bg-surface-container', 'text-secondary');
+        chip.classList.add('bg-primary', 'text-on-primary');
+      });
+    });
+
+    // Simulate upload progress
+    const progressBar = document.querySelector('.bg-primary.rounded-full');
+    const progressText = document.querySelector('.text-primary.font-bold');
+    let progress = 78;
+
+    setInterval(() => {
+      if (progress < 100) {
+        progress += Math.random() * 0.5;
+        if (progress > 100) progress = 100;
+        progressBar.style.width = `${progress}%`;
+        progressText.innerText = `${Math.floor(progress)}%`;
+      }
+    }, 2000);
+  </script>
+</body></html>

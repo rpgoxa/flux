@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        @keyframes gentle-pulse {
+            0%, 100% { transform: scale(1); box-shadow: 0 0 0 0px rgba(188, 0, 10, 0.2); }
+            50% { transform: scale(1.03); box-shadow: 0 0 0 20px rgba(188, 0, 10, 0); }
+        }
+        .pulse-effect {
+            animation: gentle-pulse 3s infinite ease-in-out;
+        }
+        .soft-shadow {
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.04);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-container-low": "#f4f3f8",
+                      "inverse-surface": "#2f3034",
+                      "on-primary": "#ffffff",
+                      "background": "#faf9fe",
+                      "on-tertiary-fixed": "#1a1c1f",
+                      "outline": "#926f6a",
+                      "outline-variant": "#e7bdb7",
+                      "surface-dim": "#dad9df",
+                      "secondary-container": "#e2dfe1",
+                      "on-tertiary-fixed-variant": "#45474b",
+                      "inverse-primary": "#ffb4aa",
+                      "surface": "#faf9fe",
+                      "primary": "#bc000a",
+                      "surface-container": "#eeedf3",
+                      "tertiary": "#5a5c60",
+                      "on-background": "#1a1b1f",
+                      "on-error": "#ffffff",
+                      "secondary-fixed": "#e4e2e4",
+                      "on-surface": "#1a1b1f",
+                      "surface-container-high": "#e9e7ed",
+                      "on-primary-container": "#fffbff",
+                      "secondary-fixed-dim": "#c8c6c8",
+                      "error-container": "#ffdad6",
+                      "on-surface-variant": "#5d3f3b",
+                      "surface-tint": "#c0000a",
+                      "surface-bright": "#faf9fe",
+                      "on-tertiary": "#ffffff",
+                      "on-error-container": "#93000a",
+                      "on-primary-fixed-variant": "#930005",
+                      "on-primary-fixed": "#410001",
+                      "on-secondary-fixed-variant": "#474649",
+                      "on-secondary-container": "#636264",
+                      "surface-container-lowest": "#ffffff",
+                      "on-secondary": "#ffffff",
+                      "surface-variant": "#e3e2e7",
+                      "error": "#ba1a1a",
+                      "primary-fixed": "#ffdad5",
+                      "tertiary-fixed": "#e2e2e7",
+                      "on-tertiary-container": "#fdfcff",
+                      "tertiary-container": "#737479",
+                      "primary-fixed-dim": "#ffb4aa",
+                      "on-secondary-fixed": "#1b1b1d",
+                      "secondary": "#5f5e60",
+                      "primary-container": "#e2241f",
+                      "inverse-on-surface": "#f1f0f5",
+                      "tertiary-fixed-dim": "#c6c6cb",
+                      "surface-container-highest": "#e3e2e7"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "xs": "8px",
+                      "margin-mobile": "16px",
+                      "lg": "40px",
+                      "margin-desktop": "32px",
+                      "base": "4px",
+                      "md": "24px",
+                      "sm": "16px",
+                      "xl": "64px",
+                      "gutter": "20px"
+              },
+              "fontFamily": {
+                      "title-md": ["Inter"],
+                      "body-lg": ["Inter"],
+                      "display-lg": ["Inter"],
+                      "body-sm": ["Inter"],
+                      "headline-lg": ["Inter"],
+                      "label-md": ["Inter"],
+                      "headline-lg-mobile": ["Inter"]
+              },
+              "fontSize": {
+                      "title-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                      "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                      "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                      "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "700"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-surface text-on-surface font-body-lg overflow-x-hidden">
+<!-- TopAppBar -->
+<header class="bg-surface dark:bg-surface-dim w-full top-0 sticky z-50 flex justify-between items-center px-margin-mobile py-sm w-full">
+<div class="flex items-center gap-sm">
+<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center overflow-hidden">
+<img alt="User profile avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB1i3wIyQ66xCH4Iskq1RjL1TrXSqXwEcAHBlXZ1AbQpxhDGWsZnyC5XG5_jlrxSRmQmYk-VjzGjBZ6BgPJFLnjH0bOXq5ltDZ7LtHR2EnC5RCw0-po9S4D1sSiG7ElxNTt8-4wnwmIdqJCS4jEgjrTZAOGsYYlKdgu9y_RS_lqPAqQPT6tIKQvdPzWb5jufPP7ar46AegcP9FgsAVsxLxBDhNbCQ2B-wl97GDqbCgMl0JjhnCffN8zJkjXVnQg4Hd-AH8pEmytMZ3Z"/>
+</div>
+<span class="text-headline-lg-mobile font-headline-lg-mobile font-bold text-primary dark:text-primary-fixed">Flux</span>
+</div>
+<button class="text-on-surface-variant dark:text-on-surface-variant hover:opacity-80 transition-opacity active:scale-95 transition-transform duration-200">
+<span class="material-symbols-outlined text-[28px]" data-icon="notifications">notifications</span>
+</button>
+</header>
+<main class="min-h-[calc(100vh-140px)] flex flex-col items-center justify-center px-margin-mobile relative">
+<!-- Atmospheric Background Element -->
+<div class="absolute inset-0 pointer-events-none opacity-40 overflow-hidden">
+
+</div>
+<section class="w-full max-w-md flex flex-col items-center gap-xl relative z-10">
+<!-- Central Content Area -->
+<div class="text-center space-y-base">
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface">Ready to start?</h1>
+<p class="font-body-lg text-body-lg text-secondary">Tap the button below to begin recording.</p>
+</div>
+<!-- The Big Friendly Record Button -->
+<div class="relative flex items-center justify-center">
+<button class="pulse-effect w-56 h-56 md:w-64 md:h-64 rounded-full bg-primary flex items-center justify-center shadow-[0_20px_50px_rgba(188,0,10,0.3)] hover:scale-105 active:scale-90 transition-all duration-300" id="recordButton">
+<div class="w-48 h-48 md:w-56 md:h-56 rounded-full border-4 border-white/20 flex flex-col items-center justify-center gap-xs">
+<span class="material-symbols-outlined text-white text-6xl" data-icon="radio_button_checked" style="font-variation-settings: 'FILL' 1;">radio_button_checked</span>
+<span class="text-white font-title-md text-title-md tracking-wide">RECORD</span>
+</div>
+</button>
+</div>
+<!-- Controls Section (Toggles) -->
+<div class="w-full grid grid-cols-2 gap-sm">
+<!-- Microphone Toggle -->
+<div class="bg-surface-container-lowest soft-shadow rounded-xl p-md flex flex-col items-center gap-xs border border-surface-container-high transition-all hover:border-primary/20">
+<div class="toggle-container flex flex-col items-center gap-sm">
+<div class="p-xs bg-surface-container rounded-lg">
+<span class="material-symbols-outlined text-secondary" data-icon="mic">mic</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface">Microphone</span>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-secondary-container peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+</div>
+<!-- Camera Toggle -->
+<div class="bg-surface-container-lowest soft-shadow rounded-xl p-md flex flex-col items-center gap-xs border border-surface-container-high transition-all hover:border-primary/20">
+<div class="toggle-container flex flex-col items-center gap-sm">
+<div class="p-xs bg-surface-container rounded-lg">
+<span class="material-symbols-outlined text-secondary" data-icon="videocam">videocam</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface">Camera</span>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-secondary-container peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-margin-mobile pb-md pt-sm shadow-[0_-4px_12px_rgba(0,0,0,0.04)] bg-surface dark:bg-surface-container-lowest rounded-t-xl">
+<!-- Record Tab (Active) -->
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-xl px-md py-xs hover:bg-surface-container-high transition-colors active:scale-90 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="radio_button_checked" style="font-variation-settings: 'FILL' 1;">radio_button_checked</span>
+<span class="font-label-md text-label-md">Record</span>
+</a>
+<!-- Gallery Tab -->
+<a class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed-dim px-md py-xs hover:bg-surface-container-high transition-colors active:scale-90 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="grid_view">grid_view</span>
+<span class="font-label-md text-label-md">Gallery</span>
+</a>
+<!-- Settings Tab -->
+<a class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed-dim px-md py-xs hover:bg-surface-container-high transition-colors active:scale-90 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</a>
+</nav>
+<script>
+        // Micro-interaction for the record button
+        const recordBtn = document.getElementById('recordButton');
+        let isRecording = false;
+
+        recordBtn.addEventListener('click', () => {
+            isRecording = !isRecording;
+            if (isRecording) {
+                recordBtn.classList.remove('pulse-effect');
+                recordBtn.classList.add('animate-ping');
+                setTimeout(() => {
+                    recordBtn.classList.remove('animate-ping');
+                    recordBtn.style.backgroundColor = '#1a1b1f'; // Switching to a dark "stop" state visual
+                    recordBtn.querySelector('.material-symbols-outlined').textContent = 'stop';
+                    recordBtn.querySelector('span:last-child').textContent = 'STOP';
+                }, 300);
+            } else {
+                recordBtn.classList.add('pulse-effect');
+                recordBtn.style.backgroundColor = '#bc000a';
+                recordBtn.querySelector('.material-symbols-outlined').textContent = 'radio_button_checked';
+                recordBtn.querySelector('span:last-child').textContent = 'RECORD';
+            }
+        });
+
+        // Toggle visual feedback
+        const toggles = document.querySelectorAll('input[type="checkbox"]');
+        toggles.forEach(toggle => {
+            toggle.addEventListener('change', (e) => {
+                const icon = e.target.closest('.toggle-container').querySelector('.material-symbols-outlined');
+                if(e.target.checked) {
+                    icon.style.color = '#bc000a';
+                    icon.style.fontVariationSettings = "'FILL' 1";
+                } else {
+                    icon.style.color = '#5f5e60';
+                    icon.style.fontVariationSettings = "'FILL' 0";
+                }
+            });
+        });
+
+        // Initialize icon colors based on initial checked state
+        toggles.forEach(toggle => {
+            const icon = toggle.closest('.toggle-container').querySelector('.material-symbols-outlined');
+            if(toggle.checked) {
+                icon.style.color = '#bc000a';
+                icon.style.fontVariationSettings = "'FILL' 1";
+            }
+        });
+    </script>
+</body></html>

@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Active Recording - Flux</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .recording-pulse {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.1); }
+        }
+        .waveform-bar {
+            transition: height 0.1s ease-in-out;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-low": "#f4f3f8",
+                        "inverse-surface": "#2f3034",
+                        "on-primary": "#ffffff",
+                        "background": "#faf9fe",
+                        "on-tertiary-fixed": "#1a1c1f",
+                        "outline": "#926f6a",
+                        "outline-variant": "#e7bdb7",
+                        "surface-dim": "#dad9df",
+                        "secondary-container": "#e2dfe1",
+                        "on-tertiary-fixed-variant": "#45474b",
+                        "inverse-primary": "#ffb4aa",
+                        "surface": "#faf9fe",
+                        "primary": "#bc000a",
+                        "surface-container": "#eeedf3",
+                        "tertiary": "#5a5c60",
+                        "on-background": "#1a1b1f",
+                        "on-error": "#ffffff",
+                        "secondary-fixed": "#e4e2e4",
+                        "on-surface": "#1a1b1f",
+                        "surface-container-high": "#e9e7ed",
+                        "on-primary-container": "#fffbff",
+                        "secondary-fixed-dim": "#c8c6c8",
+                        "error-container": "#ffdad6",
+                        "on-surface-variant": "#5d3f3b",
+                        "surface-tint": "#c0000a",
+                        "surface-bright": "#faf9fe",
+                        "on-tertiary": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "on-primary-fixed-variant": "#930005",
+                        "on-primary-fixed": "#410001",
+                        "on-secondary-fixed-variant": "#474649",
+                        "on-secondary-container": "#636264",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "surface-variant": "#e3e2e7",
+                        "error": "#ba1a1a",
+                        "primary-fixed": "#ffdad5",
+                        "tertiary-fixed": "#e2e2e7",
+                        "on-tertiary-container": "#fdfcff",
+                        "tertiary-container": "#737479",
+                        "primary-fixed-dim": "#ffb4aa",
+                        "on-secondary-fixed": "#1b1b1d",
+                        "secondary": "#5f5e60",
+                        "primary-container": "#e2241f",
+                        "inverse-on-surface": "#f1f0f5",
+                        "tertiary-fixed-dim": "#c6c6cb",
+                        "surface-container-highest": "#e3e2e7"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xs": "8px",
+                        "margin-mobile": "16px",
+                        "lg": "40px",
+                        "margin-desktop": "32px",
+                        "base": "4px",
+                        "md": "24px",
+                        "sm": "16px",
+                        "xl": "64px",
+                        "gutter": "20px"
+                    },
+                    "fontFamily": {
+                        "title-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-lg-mobile": ["Inter"]
+                    },
+                    "fontSize": {
+                        "title-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-[#000000] text-white min-h-screen flex flex-col items-center justify-between overflow-hidden">
+<!-- Status Bar / Indicator -->
+<header class="w-full flex flex-col items-center pt-xl px-margin-mobile">
+<div class="flex items-center gap-xs mb-xs">
+<div class="w-3 h-3 bg-primary rounded-full recording-pulse shadow-[0_0_12px_#bc000a]"></div>
+<span class="font-label-md text-label-md tracking-widest text-primary uppercase">Recording</span>
+</div>
+<div class="font-display-lg text-[64px] font-bold tracking-tighter tabular-nums" id="timer">00:12:45</div>
+<div class="text-secondary-fixed-dim font-body-sm text-body-sm mt-xs opacity-60">High Fidelity Mono • 48kHz</div>
+</header>
+<!-- Visualizer Section -->
+<main class="flex-grow w-full flex items-center justify-center px-lg">
+<div class="relative w-full max-w-md h-64 flex items-center justify-center gap-1">
+<!-- Dynamic Visualizer Bars -->
+<div class="flex items-center justify-center gap-[4px] h-32 w-full" id="visualizer">
+<!-- Generated by JS -->
+</div>
+<!-- Atmospheric Background Glow -->
+<div class="absolute inset-0 bg-primary/5 blur-3xl rounded-full scale-150 -z-10"></div>
+</div>
+</main>
+<!-- Controls Section -->
+<footer class="w-full pb-xl px-margin-mobile flex flex-col items-center gap-lg">
+<div class="flex items-center gap-md">
+<button class="w-14 h-14 rounded-full border border-white/10 flex items-center justify-center bg-white/5 active:scale-95 transition-all">
+<span class="material-symbols-outlined text-white" data-icon="pause">pause</span>
+</button>
+<button class="group relative w-24 h-24 bg-white rounded-full flex items-center justify-center active:scale-90 transition-all duration-200 shadow-[0_0_40px_rgba(255,255,255,0.1)]" id="stopButton">
+<div class="w-8 h-8 bg-primary rounded-sm"></div>
+<!-- Tactical Shadow Effect -->
+<div class="absolute inset-0 rounded-full border-4 border-black/10"></div>
+</button>
+<button class="w-14 h-14 rounded-full border border-white/10 flex items-center justify-center bg-white/5 active:scale-95 transition-all">
+<span class="material-symbols-outlined text-white" data-icon="bookmark">bookmark</span>
+</button>
+</div>
+<div class="flex flex-col items-center">
+<p class="font-label-md text-label-md text-secondary-fixed-dim uppercase tracking-widest opacity-40">Tap to stop and save</p>
+</div>
+</footer>
+<!-- Overlay Interaction Layer -->
+<div class="fixed inset-0 bg-black/90 z-50 flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300" id="saveModal">
+<div class="bg-surface-container-lowest p-md rounded-xl w-[90%] max-w-sm text-on-surface">
+<h3 class="font-title-md text-title-md mb-xs">Save Recording?</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-md">Flux-Recording-042.wav</p>
+<div class="flex gap-sm">
+<button class="flex-1 py-sm font-label-md text-label-md uppercase tracking-wide bg-surface-container-high rounded-lg" onclick="closeModal()">Discard</button>
+<button class="flex-1 py-sm font-label-md text-label-md uppercase tracking-wide bg-primary text-on-primary rounded-lg" onclick="closeModal()">Save</button>
+</div>
+</div>
+</div>
+<script>
+        // Timer Logic
+        let seconds = 765; // 12:45 starting point for demo
+        const timerElement = document.getElementById('timer');
+
+        function updateTimer() {
+            seconds++;
+            const h = Math.floor(seconds / 3600);
+            const m = Math.floor((seconds % 3600) / 60);
+            const s = seconds % 60;
+            timerElement.textContent = 
+                `${h.toString().padStart(2, '0')}:${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
+        }
+        setInterval(updateTimer, 1000);
+
+        // Visualizer Simulation
+        const visualizer = document.getElementById('visualizer');
+        const barCount = 40;
+        const bars = [];
+
+        for (let i = 0; i < barCount; i++) {
+            const bar = document.createElement('div');
+            bar.className = 'waveform-bar w-1 bg-white/20 rounded-full transition-all duration-75';
+            const initialHeight = Math.random() * 100 + 10;
+            bar.style.height = `${initialHeight}%`;
+            visualizer.appendChild(bar);
+            bars.push(bar);
+        }
+
+        function animateBars() {
+            bars.forEach(bar => {
+                const newHeight = Math.random() * 80 + 10;
+                bar.style.height = `${newHeight}%`;
+                // Center bars glow more
+                const index = bars.indexOf(bar);
+                const centerDist = Math.abs(index - (barCount/2)) / (barCount/2);
+                bar.style.backgroundColor = `rgba(255, 255, 255, ${0.8 - (centerDist * 0.6)})`;
+            });
+        }
+        setInterval(animateBars, 150);
+
+        // Stop Interaction
+        const stopBtn = document.getElementById('stopButton');
+        const modal = document.getElementById('saveModal');
+
+        stopBtn.addEventListener('click', () => {
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+            modal.classList.add('opacity-100', 'pointer-events-auto');
+        });
+
+        function closeModal() {
+            modal.classList.add('opacity-0', 'pointer-events-none');
+            modal.classList.remove('opacity-100', 'pointer-events-auto');
+        }
+    </script>
+</body></html>

@@ -1,0 +1,37 @@
+name: flux_app
+description: Flux — mobile screen recorder UI (interface only, Crimson & Clarity theme).
+publish_to: "none"
+version: 0.1.0+1
+
+environment:
+  sdk: ">=3.6.0 <4.0.0"
+  flutter: ">=3.27.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  google_fonts: ^6.2.1
+  flutter_riverpod: ^2.6.1
+  path_provider: ^2.1.0
+  video_player: ^2.9.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^4.0.0
+  flutter_native_splash: ^2.4.0
+
+# Native cold-start splash (Crimson & Clarity surface color).
+flutter_native_splash:
+  color: "#FAF9FE"
+  android: true
+  ios: false
+  web: false
+
+flutter:
+  uses-material-design: true
+
+  fonts:
+    - family: Inter
+      fonts:
+        - asset: assets/fonts/Inter.ttf

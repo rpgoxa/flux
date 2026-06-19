@@ -15,8 +15,24 @@ class AppSettingsScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final settings = ref.watch(settingsProvider);
+    final settingsAsync = ref.watch(settingsProvider);
     final notifier = ref.read(settingsProvider.notifier);
+    return settingsAsync.when(
+      loading: () => const Center(
+        child: CircularProgressIndicator(color: AppColors.primary),
+      ),
+      error: (_, __) => Center(
+        child: Text('Could not load settings', style: AppTypography.bodyLg),
+      ),
+      data: (settings) => _buildSettings(context, settings, notifier),
+    );
+  }
+
+  Widget _buildSettings(
+    BuildContext context,
+    SettingsState settings,
+    SettingsNotifier notifier,
+  ) {
     return ListView(
       padding: const EdgeInsets.fromLTRB(
         AppSpacing.marginMobile,

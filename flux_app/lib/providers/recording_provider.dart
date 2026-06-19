@@ -36,7 +36,8 @@ class RecordingNotifier extends Notifier<RecordingState> {
       clearFilePath: true,
     );
 
-    final settings = ref.read(settingsProvider);
+    final settings =
+        ref.read(settingsProvider).valueOrNull ?? const SettingsState();
     final ok = await _service.startRecording(
       quality: settings.quality.recordingQuality,
       audioEnabled: state.micEnabled,

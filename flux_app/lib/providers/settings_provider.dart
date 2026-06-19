@@ -1,4 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:flux_app/services/recording_service.dart';
 
@@ -52,20 +53,51 @@ class SettingsState {
   }
 }
 
-class SettingsNotifier extends Notifier<SettingsState> {
-  @override
-  SettingsState build() => const SettingsState();
+/// SharedPreferences keys.
+const _kQuality = 'flux_quality';
+const _kSaveToPhotos = 'flux_save_to_photos';
 
-  void setQuality(QualityPreset preset) =>
-      state = state.copyWith(quality: preset);
+/// Loads persisted recording prefs on startup and writes through on every
+/// change so settings survive app restarts. Async because reading prefs is
+/// async; the settings UI shows a brief loader on first load.
+class SettingsNotifier extends AsyncNotifier<SettingsState> {
+  @override
+  Future<SettingsState> build() async {
+    final prefs = await SharedPreferences.getInstance();
+    return SettingsState(
+      quality: _readQuality(prefs),
+      saveToPhotos: prefs.getBool(_kSaveToPhotos) ?? true,
+    );
+  }
+
+  QualityPreset _readQuality(SharedPreferences prefs) {
+    final name = prefs.getString(_kQuality);
+    if (name == null) return QualityPreset.medium;
+    return QualityPreset.values
+        .firstWhere((q) => q.name == name, orElse: () => QualityPreset.medium);
+  }
+
+  /// Current state regardless of async phase; falls back to defaults.
+  SettingsState get _current => state.valueOrNull ?? const SettingsState();
+
+  Future<void> setQuality(QualityPreset preset) async {
+    state = AsyncData(_current.copyWith(quality: preset));
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString(_kQuality, preset.name);
+  }
 
   /// Selector callback — maps the tapped index to a preset.
-  void selectQualityIndex(int index) =>
-      state = state.copyWith(quality: QualityPreset.values[index]);
+  Future<void> selectQualityIndex(int index) =>
+      setQuality(QualityPreset.values[index]);
 
-  void setSaveToPhotos(bool value) =>
-      state = state.copyWith(saveToPhotos: value);
+  Future<void> setSaveToPhotos(bool value) async {
+    state = AsyncData(_current.copyWith(saveToPhotos: value));
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setBool(_kSaveToPhotos, value);
+  }
 }
 
 final settingsProvider =
-    NotifierProvider<SettingsNotifier, SettingsState>(SettingsNotifier.new);
+    AsyncNotifierProvider<SettingsNotifier, SettingsState>(
+  SettingsNotifier.new,
+);

@@ -11,6 +11,7 @@ import android.content.pm.PackageManager
 import android.content.pm.ServiceInfo
 import android.hardware.display.DisplayManager
 import android.hardware.display.VirtualDisplay
+import android.media.MediaCodecInfo
 import android.media.MediaRecorder
 import android.media.projection.MediaProjection
 import android.media.projection.MediaProjectionManager
@@ -168,6 +169,24 @@ class ScreenRecordService : Service() {
         if (audio) r.setAudioEncoder(MediaRecorder.AudioEncoder.AAC)
         r.setVideoEncodingBitRate(bitrate)
         r.setVideoFrameRate(30)
+        // Force H.264 Baseline profile. The default encoder picks High profile
+        // (avc1.640029 — CABAC + B-frames), which budget MediaTek hardware
+        // decoders on old phones (Flux's target) cannot start() even though they
+        // report the format as supported. Baseline is the universally decodable
+        // profile for low-end devices. API 26+; wrap because some encoders reject
+        // an explicit profile/level and fall back to their default.
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            try {
+                r.setVideoEncodingProfileLevel(
+                    MediaCodecInfo.CodecProfileLevel.AVCProfileBaseline,
+                    MediaCodecInfo.CodecProfileLevel.AVCLevel4,
+                )
+            } catch (e: Exception) {
+                RecordingMethodHandler.emitError(
+                    "Could not set Baseline profile — using encoder default",
+                )
+            }
+        }
         r.prepare()
         return r
     }
@@ -237,12 +256,16 @@ class ScreenRecordService : Service() {
         }
         // Never upscale beyond the device's native resolution.
         val scale = if (shortSide == 0) 1.0 else (targetShort.toDouble() / shortSide).coerceAtMost(1.0)
-        val width = even((nativeW * scale).toInt()).coerceAtLeast(2)
-        val height = even((nativeH * scale).toInt()).coerceAtLeast(2)
+        // Align to 16. MediaTek/some hardware AVC decoders reject non-16-aligned
+        // dimensions at MediaCodec.start() even though ExoPlayer reports the
+        // format as supported (e.g. 720x1492 -> 720x1488). Round down so we
+        // never exceed the native resolution.
+        val width = align16((nativeW * scale).toInt())
+        val height = align16((nativeH * scale).toInt())
         return Triple(width, height, bitrate)
     }
 
-    private fun even(v: Int): Int = if (v % 2 == 0) v else v - 1
+    private fun align16(v: Int): Int = (v / 16 * 16).coerceAtLeast(16)
 
     private fun hasAudioPermission(): Boolean =
         Build.VERSION.SDK_INT < Build.VERSION_CODES.M ||

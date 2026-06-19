@@ -25,6 +25,8 @@ class MainActivity : FlutterActivity() {
             .setMethodCallHandler(ThumbnailHandler(this))
         MethodChannel(messenger, GallerySaverHandler.CHANNEL)
             .setMethodCallHandler(saver)
+        MethodChannel(messenger, VideoLauncherHandler.CHANNEL)
+            .setMethodCallHandler(VideoLauncherHandler(this))
     }
 
     @Deprecated("Forwarding MediaProjection permission result to the handler")

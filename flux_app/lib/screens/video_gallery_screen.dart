@@ -4,9 +4,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flux_app/data/mock_data.dart';
 import 'package:flux_app/models/video_item.dart';
 import 'package:flux_app/providers/gallery_provider.dart';
+import 'package:flux_app/services/video_launcher_service.dart';
 import 'package:flux_app/theme/app_colors.dart';
 import 'package:flux_app/theme/app_spacing.dart';
-import 'package:flux_app/screens/video_player_screen.dart';
 import 'package:flux_app/theme/app_typography.dart';
 import 'package:flux_app/widgets/filter_chip_row.dart';
 import 'package:flux_app/widgets/video_card.dart';
@@ -105,20 +105,26 @@ class VideoGalleryScreen extends ConsumerWidget {
   ) {
     switch (action) {
       case VideoCardAction.watch:
-        Navigator.of(context).push(
-          MaterialPageRoute<void>(
-            builder: (_) => VideoPlayerScreen(
-              filePath: video.filePath,
-              title: video.title,
-            ),
-          ),
-        );
+        _watch(context, video);
       case VideoCardAction.saveToGallery:
         _saveToGallery(context, ref, video);
       case VideoCardAction.rename:
         _rename(context, ref, video);
       case VideoCardAction.delete:
         _confirmDelete(context, ref, video);
+    }
+  }
+
+  Future<void> _watch(BuildContext context, VideoItem video) async {
+    final messenger = ScaffoldMessenger.of(context);
+    final result = await VideoLauncherService.instance.open(video.filePath);
+    if (!result.ok) {
+      messenger.showSnackBar(
+        SnackBar(
+          content: Text(result.errorMessage ?? 'Could not open recording'),
+          duration: const Duration(seconds: 2),
+        ),
+      );
     }
   }
 

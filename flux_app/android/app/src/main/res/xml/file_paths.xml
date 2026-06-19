@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths>
+    <!-- Recordings live in getExternalFilesDir(null); expose its root. -->
+    <external-files-path name="recordings" path="." />
+</paths>
